@@ -9,6 +9,10 @@ router.post('/', async (req, res) => {
     return res.json(status)
   });
 
+  router.get('/', async (req, res) => {
+    let status = await logic.getAllUser()
+    return res.json(status)
+  });
 
 
 module.exports = router
