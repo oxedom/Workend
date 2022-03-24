@@ -1,18 +1,20 @@
 const express = require('express');
 // const userModel = require('../models/userModel');
 const router = express.Router();
-const logic = require('../models/post_BL')
+const logic = require('../models/bl/post_BL')
+
+
 
 router.post('/', async (req, res) => {
     let status = await logic.addAPost(req.body)
-    console.log(req.body)
     return res.json(status)
   });
 
 
 router.get('/', async (req, res) => {
-  let status = await logic.getAllPost()
+  let status = await logic.getAllPosts()
     return res.json(status)
+
   });
 
 router.get('/:id', async (req, res) => {

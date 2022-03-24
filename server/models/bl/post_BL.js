@@ -1,5 +1,5 @@
-const Post = require('./postModel')
-
+const Post = require('../postModel')
+const User = require('../userModel')
 
 //Creates a Post Obj based of the Post Schema and puts of the PostObj info 
 //from the req obj into the new Post and at the end saves the new Post.
@@ -13,10 +13,18 @@ const addAPost = (postObj) => {
         newPost.text =  postObj.text
         newPost.date = new Date().getTime()
     
-
-        newPost.save( (err) => {
+        newPost.save( async (err) => {
             if(err) { reject(err)}
-            else { resolve('Post added to DB')}
+            
+
+            let theUser = await  User.findById(newPost.userid)
+            theUser.posts.push(newPost._id)
+            User.findByIdAndUpdate(`${newPost.userid}`, theUser).then( () => 
+            {
+                resolve(`Added post for USERID: ${newPost.userid}, the post ID is ${newPost._id}`)
+            })
+        
+          
         })
     })
 }
@@ -48,7 +56,8 @@ const deletePostByID = (id) =>
 {
     return new Promise((resolve,reject) => {
         Post.findByIdAndDelete(id)
-        .then(data => resolve("Deleted"))
+        .then(data =>
+             resolve("Deleted"))
         .catch(err => { reject(err)})
     })
 }

@@ -24,7 +24,8 @@ db.on("error", console.error.bind(console, "mongo connection error"))
 
 app.use(express.json())
 app.use(cors())
-app.use('/api/user/', user_routes)
 app.use('/api/user/posts', post_routes)
+app.use('/api/user/', user_routes)
+
 
 

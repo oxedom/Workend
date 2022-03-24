@@ -1,4 +1,4 @@
-const User = require('./userModel')
+const User = require('../userModel')
 
 
 //Creates a user Obj based of the User Schema and puts of the userObj info 
