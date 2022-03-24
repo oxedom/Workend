@@ -8,6 +8,7 @@ const cors = require('cors')
 const config = require('./config/config')
 const user_routes = require('./routes/users')
 const post_routes = require('./routes/posts')
+const task_routes = require('./routes/tasks')
 const User = require('./models/userModel')
 
 
@@ -24,6 +25,7 @@ db.on("error", console.error.bind(console, "mongo connection error"))
 
 app.use(express.json())
 app.use(cors())
+app.use('/api/user/tasks', task_routes)
 app.use('/api/user/posts', post_routes)
 app.use('/api/user/', user_routes)
 
