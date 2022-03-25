@@ -90,6 +90,8 @@ const updatePostbyID = (id, postObj) => {
   })
 }
 
+//Querys DB with .find and searches for docs with userID equal to the one passed over
+//as params
 const getAllUserPosts = (id) => 
 {
 return new Promise((resolve, reject) => {

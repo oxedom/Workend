@@ -57,6 +57,15 @@ const gettaskByID = (id) => {
   })
 }
 
+//Querys DB with .find and searches for docs with userID equal to the one passed over
+//as params
+const getAllUserTasks = (id) => 
+{
+return new Promise((resolve, reject) => {
+  Task.find({userid : `${id}`}).then(data => 
+    { resolve(data); console.log(data)}).catch( err => { reject(err)} )
+})
+}
 
 const deletetaskByID = (id) => {
   return new Promise( async (resolve, reject)  => {
@@ -98,5 +107,6 @@ module.exports = {
   getAlltasks,
   gettaskByID,
   updatetaskbyID,
-  deletetaskByID
+  deletetaskByID,
+  getAllUserTasks
 }
