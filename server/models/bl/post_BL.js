@@ -90,11 +90,19 @@ const updatePostbyID = (id, postObj) => {
   })
 }
 
+const getAllUserPosts = (id) => 
+{
+return new Promise((resolve, reject) => {
+  Post.find({userid : `${id}`}).then(data => 
+    { resolve(data); console.log(data)}).catch( err => { reject(err)} )
+})
+}
 
 module.exports = {
   addAPost,
   getAllPosts,
   getPostByID,
   updatePostbyID,
-  deletePostByID
+  deletePostByID,
+  getAllUserPosts
 }
