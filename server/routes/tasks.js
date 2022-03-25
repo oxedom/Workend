@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
   });
 
-//Get Task by ID 
+//Get All the users tasks by user ID 
 router.get('/:id', async (req, res) => {
     let status = await logic.getAllUserTasks(req.params.id)
       return res.json(status)
