@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 //Get All the users posts by user ID 
 router.get('/:id', async (req, res) => {
-    let status = await logic.getAllUserPosts(req.params.id)
+    let status = await logic.getPostByID(req.params.id)
       return res.json(status)
     });
 
