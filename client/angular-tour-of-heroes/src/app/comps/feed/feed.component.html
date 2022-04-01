@@ -1,4 +1,10 @@
-<div *ngFor="let p of postIDs" class="container"> 
-    <app-post [postID]="p"></app-post>
-    
+<div class="container">
+
+    <app-add-post></app-add-post>
+</div>
+
+<div>
+    <div *ngFor="let p of postIDs"  class="container"> 
+        <app-post [postID]="p"></app-post>   
+    </div>
 </div>
