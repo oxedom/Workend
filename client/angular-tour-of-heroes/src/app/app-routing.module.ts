@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-const routes: Routes = [];
+import { FeedComponent } from './comps/feed/feed.component';
+
+
+const routes: Routes = [   { path: 'feed', component: FeedComponent},];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

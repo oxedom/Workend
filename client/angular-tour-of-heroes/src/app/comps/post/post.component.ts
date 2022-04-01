@@ -1,7 +1,7 @@
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { HttpServiceService } from 'src/app/service/http-service.service';
 @Component({
-  selector: 'app-post',
+  selector: 'app-post[postID]',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
@@ -31,7 +31,7 @@ export class PostComponent implements OnInit {
 
  getPostData() 
  {
-   if(this.postID === '') { throw Error}
+  //  if(this.postID === '') { throw Error}
    this.logic.getData(this.apiUrl).subscribe( (data: any) => {
     this.postUserID = data.userid
     this.postDate  = data.date

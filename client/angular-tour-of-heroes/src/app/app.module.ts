@@ -9,11 +9,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { PostComponent } from './comps/post/post.component';
 import { MatCard, MatCardModule } from '@angular/material/card';
+import { FeedComponent } from './comps/feed/feed.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, PostComponent
+    AppComponent, PostComponent, FeedComponent
   ],
   imports: [
     BrowserModule,
