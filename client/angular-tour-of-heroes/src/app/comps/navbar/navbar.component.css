@@ -8,3 +8,7 @@ justify-content: center;
 background-color: rgba(114,155,121);
 }
 
+.image {
+    max-width: 175px;
+    max-height: 100px;
+ }

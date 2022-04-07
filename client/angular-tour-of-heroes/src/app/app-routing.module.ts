@@ -5,7 +5,7 @@ import { ProfileComponent } from './comps/profile/profile.component';
 
 
 const routes: Routes = [   { path: 'feed', component: FeedComponent}, 
-{ path: 'profile', component: ProfileComponent}
+{ path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({

@@ -24,6 +24,8 @@ export class PostComponent implements OnInit {
   @Input()  
   postID: string = ''
 
+ userName : string = ""
+
   postText : string = ""
   postUserID: string = ""
   postDate: string = ""
@@ -40,7 +42,13 @@ export class PostComponent implements OnInit {
  return formattedTime
  }
 
-
+ getUserData(userID : string) {
+   this.axios.getData(`http://localhost:8000/api/user/${userID}`)
+   .subscribe( (data: any) => {
+     this.userName = `${data.fname} ${data.lname}`
+    
+   })
+  }
 
  getPostData(postId: string) 
  {
@@ -48,6 +56,7 @@ export class PostComponent implements OnInit {
     // this.postUserID = data.userid
      this.postDate  =  this.unixToDate(data.date)
      this.postText = data.text
+     this.getUserData(data.userid)
    })
  }
 
@@ -62,6 +71,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
 
     this.getPostData(this.postID)
+  
   }
 
   ngOnDestory(): void {
