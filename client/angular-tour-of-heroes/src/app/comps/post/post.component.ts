@@ -1,5 +1,6 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';
 import { HttpServiceService } from 'src/app/service/http-service.service';
+
 @Component({
   selector: 'app-post[postID]',
   templateUrl: './post.component.html',
@@ -8,7 +9,7 @@ import { HttpServiceService } from 'src/app/service/http-service.service';
 export class PostComponent implements OnInit {
 
 
-  constructor(private logic: HttpServiceService) 
+  constructor(private axios: HttpServiceService) 
   {
     
  }
@@ -19,6 +20,7 @@ export class PostComponent implements OnInit {
 
   sub: any = ""
   
+
   @Input()  
   postID: string = ''
 
@@ -38,14 +40,24 @@ export class PostComponent implements OnInit {
  return formattedTime
  }
 
+
+
  getPostData(postId: string) 
  {
-   this.logic.getData(this.apiUrl+postId).subscribe( (data: any) => {
+   this.axios.getData(this.apiUrl+postId).subscribe( (data: any) => {
     // this.postUserID = data.userid
      this.postDate  =  this.unixToDate(data.date)
      this.postText = data.text
    })
  }
+
+
+ handleClick() {
+
+  this.sub = this.axios.deletePost(this.postID).subscribe( (data: any) => 
+  { console.log(`the resp from deletePost is ${data}`);
+  })
+}
 
   ngOnInit(): void {
 
