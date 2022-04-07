@@ -11,11 +11,11 @@ import { PostComponent } from './comps/post/post.component';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { FeedComponent } from './comps/feed/feed.component';
 import { AddPostComponent } from './comps/add-post/add-post.component';
-
+import { NavbarComponent } from './comps/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent, PostComponent, FeedComponent, AddPostComponent
+    AppComponent, PostComponent, FeedComponent, AddPostComponent, NavbarComponent
   ],
   imports: [
     BrowserModule,

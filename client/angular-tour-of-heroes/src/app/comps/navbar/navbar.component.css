@@ -1,0 +1,10 @@
+ul {
+    list-style-type: none;
+}
+
+.navBar { 
+    display:  flex;
+justify-content: center;
+background-color: rgba(114,155,121);
+}
+

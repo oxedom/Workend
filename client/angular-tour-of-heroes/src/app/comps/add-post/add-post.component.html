@@ -1,5 +1,8 @@
-<div class="post container" >
-    <textarea name="" id="" cols="10" rows="10"></textarea>
-    
-    <button (click)="handleClick()"> POST </button>
+<div  >
+    <form #f="ngForm" class="post container"  (ngSubmit)="onSubmit(f)">
+        <input name="postContent" minlength="5" [(ngModel)]="postContent" class="input" type="text" #first="ngModel" required >
+        <div *ngIf="notValid" style="background-color: rgb(219, 42, 42);"> <p> Post needs to be longer than 5 chars</p></div>
+        <button>Submit</button>
+    </form>
+
     </div>

@@ -16,6 +16,7 @@ export class FeedComponent implements OnInit {
     this.logic.getData('http://localhost:8000/api/user/posts').subscribe( (data : any) => {
      let newData =  data.map( (post: any) => { return post._id } )
     this.postIDs = newData
+    console.log(this.postIDs)
     })
   }
 

@@ -17,3 +17,8 @@ button { background-color: rgb(161, 226, 161);}
 .post { width: 200px; 
 
 } 
+
+.input {
+    border-radius: 10px;
+    height: 7.5rem;
+}

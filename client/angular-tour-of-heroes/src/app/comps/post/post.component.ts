@@ -20,27 +20,36 @@ export class PostComponent implements OnInit {
   sub: any = ""
   
   @Input()  
-  postID: string = '623d93736bb07267a44310f7'
+  postID: string = ''
 
   postText : string = ""
   postUserID: string = ""
   postDate: string = ""
   
-  apiUrl: string = `http://localhost:8000/api/user/posts/${this.postID}`
+  apiUrl: string = `http://localhost:8000/api/user/posts/`
 
-
- getPostData() 
+ unixToDate(unixTime: string) 
  {
-  //  if(this.postID === '') { throw Error}
-   this.logic.getData(this.apiUrl).subscribe( (data: any) => {
-    this.postUserID = data.userid
-    this.postDate  = data.date
+  var date = new Date(parseInt(unixTime) * 1000);
+  var hours = date.getHours();
+  var minutes = "0" + date.getMinutes();
+  var seconds = "0" + date.getSeconds();
+  var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+ return formattedTime
+ }
+
+ getPostData(postId: string) 
+ {
+   this.logic.getData(this.apiUrl+postId).subscribe( (data: any) => {
+    // this.postUserID = data.userid
+     this.postDate  =  this.unixToDate(data.date)
      this.postText = data.text
    })
  }
 
   ngOnInit(): void {
-    this.getPostData()
+
+    this.getPostData(this.postID)
   }
 
   ngOnDestory(): void {
