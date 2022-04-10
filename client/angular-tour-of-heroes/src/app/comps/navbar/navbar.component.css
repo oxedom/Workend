@@ -5,7 +5,7 @@ ul {
 .navBar { 
     display:  flex;
 justify-content: center;
-background-color: rgba(114,155,121);
+/* background-color: rgba(114,155,121); */
 }
 
 .image {

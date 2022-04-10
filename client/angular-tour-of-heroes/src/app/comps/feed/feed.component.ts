@@ -3,6 +3,9 @@ import { HttpServiceService } from 'src/app/service/http-service.service';
 import { StoreService } from 'src/app/service/store.service';
 import { TaskComponent } from '../task/task.component';
 import { PostComponent } from '../post/post.component';
+import { Subscription } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-feed',
@@ -11,6 +14,8 @@ import { PostComponent } from '../post/post.component';
 })
 export class FeedComponent implements OnInit {
 
+  taskSub : Subscription = new Subscription()
+  postSub: Subscription = new Subscription()
   postIDs : Array<string> = []
   taskIDs : Array<string> = []
   @Input()
@@ -25,13 +30,13 @@ export class FeedComponent implements OnInit {
     })
 
 
-    this.logic.getData('http://localhost:8000/api/user/posts').subscribe( (data : any) => {
+    this.postSub = this.logic.getData('http://localhost:8000/api/user/posts').subscribe( (data : any) => {
      let newData =  data.map( (post: any) => { return post._id } )
     this.postIDs = newData
     console.log(this.postIDs)
     })
 
-    this.logic.getData('http://localhost:8000/api/user/tasks').subscribe( (data : any) => {
+    this.taskSub =  this.logic.getData('http://localhost:8000/api/user/tasks').subscribe( (data : any) => {
       let newData =  data.map( (post: any) => { return post._id } )
      this.taskIDs = newData
      console.log(this.taskIDs)
@@ -41,6 +46,7 @@ export class FeedComponent implements OnInit {
 
   ngOnDestory() 
   {
-  
+    this.postSub
+    this.taskSub
   }
 }

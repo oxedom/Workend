@@ -11,12 +11,18 @@ export class NavbarComponent implements OnInit {
   @Output() 
   modeUpdate:EventEmitter<any> = new EventEmitter()
 
-  
+  modeColor: string = ""
+  socialColor : string = "rgb(114,155,121)"
+  workColor: string = "rgb(249,171,85)"
+
   mode: boolean = true
 
   handleClick() 
   {
     this.store.updateMode()
+    if (this.modeColor == this.socialColor) { this.modeColor = this.workColor}
+    else { this.modeColor = this.socialColor}
+
   }
   constructor(private store : StoreService) {
    }
@@ -27,6 +33,7 @@ export class NavbarComponent implements OnInit {
   //how do I update the state inside the feed comp from the nav comp?
 
   ngOnInit(): void {
+    this.modeColor = this.socialColor
   }
 
 }

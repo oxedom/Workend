@@ -13,8 +13,6 @@ export class StoreService {
   {
     let newValue =  !this.mode$.value
     this.mode$.next(newValue)
-    alert(this.mode$.value)
-    // this.currentMode$ = !this.currentMode$
   }
 
 

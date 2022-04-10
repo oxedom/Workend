@@ -53,7 +53,7 @@ export class PostComponent implements OnInit {
  getPostData(postId: string) 
  {
    this.axios.getData(this.apiUrl+postId).subscribe( (data: any) => {
-    //  this.postDate  = this.axios.unixToDate(data.date)
+     this.postDate  = this.axios.unixToDate(data.date)
      this.postText = data.text
      this.getUserData(data.userid)
    })

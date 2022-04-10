@@ -15,7 +15,7 @@ export class TaskComponent implements OnInit {
   taskUserID: string = ""
   taskDate: string = ""
   taskTitle: string = ""
-  taskCompleted : boolean = true
+  taskCompleted : string = ""
 
   constructor(private axios : HttpServiceService) { }
   @Input()
@@ -24,9 +24,10 @@ export class TaskComponent implements OnInit {
 
  getTaskData(taskID: string) 
  {
-   this.axios.getData(this.apiUrl+taskID).subscribe( (data: any) => {
+   this.taskSub = this.axios.getData(`http://localhost:8000/api/user/tasks/${this.taskID}`).subscribe( (data: any) => {
     // this.postUserID = data.userid
-     this.taskDate  =  data.date
+    console.log(data)
+     this.taskDate  =  this.axios.unixToDate(data.date)
      this.taskText = data.text
      this.taskTitle = data.title
      this.taskCompleted = data.completed
@@ -46,7 +47,6 @@ export class TaskComponent implements OnInit {
 
 // ${this.taskID}
   ngOnInit(): void {
-    console.log(this.taskID)
     this.taskSub = this.axios.getData(`http://localhost:8000/api/user/tasks/`).subscribe( (data : any) => {
     this.getTaskData(this.taskID)
     })
