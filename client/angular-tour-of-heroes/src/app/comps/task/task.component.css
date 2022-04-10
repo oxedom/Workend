@@ -1,0 +1,16 @@
+* { font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(224, 165, 0);
+    }
+    
+    .container { 
+        border-radius: 5px;
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+    }
+    
+    .box 
+    {
+        width: 300px;
+        /* height: 100px; */
+    }

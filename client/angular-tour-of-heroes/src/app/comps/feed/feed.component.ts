@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpServiceService } from 'src/app/service/http-service.service';
+import { StoreService } from 'src/app/service/store.service';
+import { TaskComponent } from '../task/task.component';
 import { PostComponent } from '../post/post.component';
+
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -9,15 +12,35 @@ import { PostComponent } from '../post/post.component';
 export class FeedComponent implements OnInit {
 
   postIDs : Array<string> = []
+  taskIDs : Array<string> = []
+  @Input()
+  mode: boolean = true
 
-  constructor(private logic: HttpServiceService) { }
+  constructor(private logic: HttpServiceService, private store : StoreService) { }
 
   ngOnInit(): void {
+
+    this.store.currentMode$.subscribe((value) => {
+      this.mode = value
+    })
+
+
     this.logic.getData('http://localhost:8000/api/user/posts').subscribe( (data : any) => {
      let newData =  data.map( (post: any) => { return post._id } )
     this.postIDs = newData
     console.log(this.postIDs)
     })
-  }
 
+    this.logic.getData('http://localhost:8000/api/user/tasks').subscribe( (data : any) => {
+      let newData =  data.map( (post: any) => { return post._id } )
+     this.taskIDs = newData
+     console.log(this.taskIDs)
+     })
+   }
+
+
+  ngOnDestory() 
+  {
+  
+  }
 }

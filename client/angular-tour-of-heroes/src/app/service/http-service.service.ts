@@ -9,6 +9,18 @@ export class HttpServiceService {
 
   url: string = 'http://localhost:8000/api/user/posts/'
 
+  unixToDate(unixTime: string) 
+{
+ var date = new Date(parseInt(unixTime) * 1000);
+ var hours = date.getHours();
+ var minutes = "0" + date.getMinutes();
+ var seconds = "0" + date.getSeconds();
+ var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+return formattedTime
+}
+
+
+
   //Give it a URL and it will find data for you
   getData(url: string): any { return this.axios.get(url) }
 
@@ -23,3 +35,4 @@ export class HttpServiceService {
 
   constructor(private axios: HttpClient) { }
 }
+

@@ -1,0 +1,15 @@
+<div>
+  <div><h1>ID:</h1> <a routerLink="/task" routerLinkActive="active">{{user.id}}</a></div>
+  <div>
+  <ng-form>
+    <div><h3>Name :</h3><input #Uname (keyup)="onKey($event)" type="text" value="{{user.name}}"/></div>
+    <div><h3>Email :</h3><input type="text" value={{user.mail}}/></div>
+    <div>
+      <button></button>
+      <button></button>
+      <button></button>
+    </div>
+
+  </ng-form>
+  </div>
+</div>
