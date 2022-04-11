@@ -1,10 +1,14 @@
 
 
-<div class="container">
+<!-- <div class="container">
     <app-add-post></app-add-post>
-</div>
+</div> -->
 
 <div *ngIf="mode">
+
+    <div class="container">
+        <app-add-post></app-add-post>
+    </div>
     <div *ngFor="let p of postIDs"  class="container"> 
         <app-post [postID]="p"></app-post>   
     </div>
@@ -12,6 +16,9 @@
 
 <!-- [taskID]="t" -->
 <div *ngIf="!mode">
+    <div class="container">
+        <app-add-task></app-add-task>
+    </div>
     <div *ngFor="let t of taskIDs"  class="container"> 
         <app-task [taskID]="t"></app-task>   
     </div>

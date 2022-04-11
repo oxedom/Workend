@@ -14,9 +14,10 @@ import { AddPostComponent } from './comps/add-post/add-post.component';
 import { NavbarComponent } from './comps/navbar/navbar.component';
 import { ProfileComponent } from './comps/profile/profile.component';
 import { TaskComponent } from './comps/task/task.component';
+import { AddTaskComponent } from './comps/add-task/add-task.component';
 @NgModule({
   declarations: [
-    AppComponent, PostComponent, FeedComponent, AddPostComponent, NavbarComponent, ProfileComponent, TaskComponent
+    AppComponent, PostComponent, FeedComponent, AddPostComponent, NavbarComponent, ProfileComponent, TaskComponent, AddTaskComponent
   ],
   imports: [
     BrowserModule,
