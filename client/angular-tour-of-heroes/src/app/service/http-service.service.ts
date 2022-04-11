@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { retry } from 'rxjs';
 import { Post } from '../comps/models/postModel';
 import { Task } from '../comps/models/taskModel';
 @Injectable({
@@ -28,7 +29,10 @@ return formattedTime
 
   addPost(postObj: Post) { return this.axios.post(this.postUrl, postObj)}
 
+  deleteTask(taskID: string) { return this.axios.delete(this.taskUrl+taskID)}
+
   addTask(taskObj : Task) { return this.axios.post(this.taskUrl, taskObj)}
+  updateTask(taskID : string, taskObj: Task) { return this.axios.put(this.taskUrl+taskID, taskObj)}
   constructor(private axios: HttpClient) { }
 }
 

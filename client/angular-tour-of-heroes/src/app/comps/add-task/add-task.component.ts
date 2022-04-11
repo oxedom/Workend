@@ -16,6 +16,7 @@ export class AddTaskComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
+  taskTitle: string = ""
   taskCompleted: boolean = false
   sub: Subscription = new Subscription()
   taskContent : string = ""
@@ -28,7 +29,7 @@ export class AddTaskComponent implements OnInit {
     //USER ID is currently hardcoded
     let taskObj = {
         userid: "623c7440f622378a8955305b",
-        title: f.value.title,
+        title: f.value.taskTitle,
         text: content ,
         completed: f.value.taskCompleted
 
@@ -40,6 +41,8 @@ export class AddTaskComponent implements OnInit {
   
     //Resets Form and value of taskContent State to a null string
     this.taskContent = ""
+    this.taskCompleted = false
+    this.taskTitle = ""
   }
   handleClick () {  alert("I loaded :)")}
 

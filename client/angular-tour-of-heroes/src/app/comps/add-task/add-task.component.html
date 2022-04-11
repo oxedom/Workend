@@ -1,7 +1,8 @@
 <div  >
     <form #f="ngForm" class="task container"  (ngSubmit)="onSubmit(f)">
-        <input name="taskContent" minlength="5" [(ngModel)]="taskContent" class="input" type="text" #first="ngModel" required >
-        <input name="taskCompleted" type="button" value="checked" [(ngModel)]="taskCompleted" #completed="ngModel"> 
+        <input name="taskTitle" minlength="5" [(ngModel)]="taskTitle" class="inputTitle" type="text" #title="ngModel" required placeholder="Enter Task title" >
+        <input name="taskContent" minlength="5" [(ngModel)]="taskContent" class="inputContent" type="text" #first="ngModel" placeholder="Enter Task content" required >
+        <input name="taskCompleted" type="checkbox" value="unchecked" [(ngModel)]="taskCompleted" #completed="ngModel"> 
         <div *ngIf="notValid" style="background-color: rgb(219, 42, 42);"> <p> task needs to be longer than 5 chars</p></div>
         <button>Submit</button>
     </form>
