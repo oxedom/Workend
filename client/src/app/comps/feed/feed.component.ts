@@ -30,13 +30,13 @@ export class FeedComponent implements OnInit {
     })
 
 
-    this.postSub = this.logic.getData('http://localhost:8000/api/user/posts').subscribe( (data : any) => {
+    this.postSub = this.logic.getData('http://localhost:4000/api/user/posts').subscribe( (data : any) => {
      let newData =  data.map( (post: any) => { return post._id } )
     this.postIDs = newData
     console.log(this.postIDs)
     })
 
-    this.taskSub =  this.logic.getData('http://localhost:8000/api/user/tasks').subscribe( (data : any) => {
+    this.taskSub =  this.logic.getData('http://localhost:4000/api/user/tasks').subscribe( (data : any) => {
       let newData =  data.map( (post: any) => { return post._id } )
      this.taskIDs = newData
      console.log(this.taskIDs)

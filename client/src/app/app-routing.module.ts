@@ -19,6 +19,7 @@ const routes: Routes = [
 
 
 @NgModule({
+  //change it to true maybe lol
   imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })

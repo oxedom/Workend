@@ -8,8 +8,8 @@ import { Task } from '../comps/models/taskModel';
 })
 export class HttpServiceService {
 
-  postUrl: string = 'http://localhost:8000/api/user/posts/'
-  taskUrl: string = 'http://localhost:8000/api/user/tasks/'
+  postUrl: string = 'http://localhost:4000/api/user/posts/'
+  taskUrl: string = 'http://localhost:4000/api/user/tasks/'
   unixToDate(unixTime: string) 
 {
  var date = new Date(parseInt(unixTime) * 1000);

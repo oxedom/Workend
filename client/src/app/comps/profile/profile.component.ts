@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpServiceService } from 'src/app/service/http-service.service';
 import { StoreService } from 'src/app/service/store.service';
@@ -13,9 +13,12 @@ export class ProfileComponent implements OnInit {
 
   constructor(private axiox : HttpServiceService, private store : StoreService) { }
 
+  // @Output() 
+  // userID:EventEmitter<string> = new EventEmitter()
+
   sub: Subscription = new Subscription()
   mode: boolean = true
-  userID: string = "62376560612a0fbaeadca6b3"
+  userID: string = ""
   userName: string = ""
   userDepartment: string = ""
   userEmail: string = ""
@@ -24,9 +27,14 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
+    let localUserid = localStorage.getItem('userid')
+    if(localUserid == null) { this.userID = '404_USERID'}
+    else { this.userID = localUserid}
+
     this.store.currentMode$.subscribe((value) => { this.mode = value })
 
-    this.sub = this.axiox.getData('http://localhost:8000/api/user/'+this.userID)
+    this.sub = this.axiox.getData('http://localhost:4000/api/user/'+this.userID)
     .subscribe( (data : any) => {
       this.userName = `${data.fname} ${data.lname}`
       this.userDepartment = data.department

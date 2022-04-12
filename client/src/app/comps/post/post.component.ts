@@ -26,11 +26,12 @@ export class PostComponent implements OnInit {
 
  userName : string = ""
 
+ nameReturned: boolean = false
   postText : string = ""
   postUserID: string = ""
   postDate: string = ""
   
-  apiUrl: string = `http://localhost:8000/api/user/posts/`
+  apiUrl: string = `http://localhost:4000/api/user/posts/`
 
 //  unixToDate(unixTime: string) 
 //  {
@@ -43,9 +44,10 @@ export class PostComponent implements OnInit {
 //  }
 
  getUserData(userID : string) {
-   this.axios.getData(`http://localhost:8000/api/user/${userID}`)
+   this.axios.getData(`http://localhost:4000/api/user/${userID}`)
    .subscribe( (data: any) => {
      this.userName = `${data.fname} ${data.lname}`
+     this.nameReturned = true
    })
   return 
   }

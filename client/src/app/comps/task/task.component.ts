@@ -11,7 +11,7 @@ import { Task } from '../models/taskModel';
 export class TaskComponent implements OnInit {
 
 
-  apiUrl: string = `http://localhost:8000/api/user/tasks/`
+  apiUrl: string = `http://localhost:4000/api/user/tasks/`
   taskText : string = ""
   taskUserID: string = ""
   taskDate: string = ""
@@ -31,7 +31,7 @@ export class TaskComponent implements OnInit {
 
  getTaskData(taskID: string) 
  {
-   this.taskSub = this.axios.getData(`http://localhost:8000/api/user/tasks/${this.taskID}`).subscribe( (data: any) => {
+   this.taskSub = this.axios.getData(`http://localhost:4000/api/user/tasks/${this.taskID}`).subscribe( (data: any) => {
     // this.postUserID = data.userid
     console.log(data)
      this.taskDate  =  this.axios.unixToDate(data.date)
@@ -75,7 +75,7 @@ export class TaskComponent implements OnInit {
 
 // ${this.taskID}
   ngOnInit(): void {
-    this.taskSub = this.axios.getData(`http://localhost:8000/api/user/tasks/`).subscribe( (data : any) => {
+    this.taskSub = this.axios.getData(`http://localhost:4000/api/user/tasks/`).subscribe( (data : any) => {
     this.getTaskData(this.taskID)
     
     })

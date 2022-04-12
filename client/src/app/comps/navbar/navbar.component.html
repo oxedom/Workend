@@ -1,6 +1,9 @@
 <div [style.background-color]="modeColor" class="navBar">
    <img class="image" src="https://i.imgur.com/PxguQjG.png" alt="">
     <ul>
+        <li><a routerLink="/protected" routerLinkActive="active">protected</a></li>
+        <li><a routerLink="/login" routerLinkActive="active">login</a></li>
+        <li><a routerLink="/register" routerLinkActive="active">register</a></li>
         <li><a routerLink="/feed" routerLinkActive="active">feed</a></li>
         <li><a routerLink="/profile" routerLinkActive="active">profile</a></li>
         <button (click)="handleClick()">WORK/SOCIAL</button>
