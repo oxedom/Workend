@@ -16,7 +16,10 @@ const addAUser = (userObj) => {
         newUser.birthday = userObj.birthday
         newUser.posts = userObj.posts
         newUser.tasks =userObj.tasks
-
+        newUser.Username =userObj.username
+        newUser.salt =userObj.salt
+        newUser.hash =userObj.hash
+        
         newUser.save( (err) => {
             if(err) { reject(err)}
             else { resolve('User added to DB')}

@@ -6,10 +6,14 @@ const LocalStrategy = require("passport-local").Strategy;
 const app = express()
 const cors = require('cors')
 const config = require('./config/config')
-const user_routes = require('./routes/users')
-const post_routes = require('./routes/posts')
-const task_routes = require('./routes/tasks')
-const User = require('./models/userModel')
+const user_routes = require('./Routers/users')
+const post_routes = require('./Routers/posts')
+const task_routes = require('./Routers/tasks')
+const User = require('./Models/UsersModel')
+const path = require('path');
+
+
+require('dotenv').config();
 
 
 
@@ -18,16 +22,21 @@ mongoose.connect(config, { useUnifiedTopology: true, useNewUrlParser: true } )
 const db = mongoose.connection 
 db.on("error", console.error.bind(console, "mongo connection error"))
 
+require('./Models/UsersModel');
+require('./Config/passport')(passport);
 
 
 
 
-
-app.use(express.json())
+app.use(passport.initialize());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(cors())
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/user/tasks', task_routes)
 app.use('/api/user/posts', post_routes)
 app.use('/api/user/', user_routes)
-
+app.listen(8000);
 
 
