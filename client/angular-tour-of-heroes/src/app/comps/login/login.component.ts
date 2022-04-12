@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
+
 
 @Component({
   selector: 'app-login',
@@ -11,14 +13,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  @ViewChild('loginform', { static: false }) loginForm: NgForm;
+  @ViewChild('loginform', { static: false })
+  loginForm!: NgForm;
 
   constructor(
       private http: HttpClient, 
       private authService: AuthService,
       private router: Router
     ) { }
-
+    sub : Subscription = new Subscription()
   onLoginSubmit() {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
@@ -30,10 +33,10 @@ export class LoginComponent implements OnInit {
       password: password
     };
 
-    this.http.post('http://localhost:3000/users/login', reqObject, { headers: headers }).subscribe(
+    this.sub = this.http.post('http://localhost:8000/users/login', reqObject, { headers: headers }).subscribe(
       
       // The response data
-      (response) => {
+      (response : any) => {
       
         // If the user authenticates successfully, we need to store the JWT returned in localStorage
         this.authService.setLocalStorage(response);
@@ -57,4 +60,5 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestory() { this.sub}
 }
