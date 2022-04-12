@@ -14,7 +14,7 @@ export class ProtectedComponentComponent implements OnInit {
 
   // Execute this HTTP request when the route loads
   ngOnInit() {
-    this.http.get<any>('http://localhost:4000/users/protected').subscribe(
+    this.http.get<any>('http://localhost:4000/api/user/protected').subscribe(
       (response) => {
         if (response) {
           this.message = response.msg;

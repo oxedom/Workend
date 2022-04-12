@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       password: password
     };
 
-    this.http.post('http://localhost:4000/users/register', reqObject, { headers: headers }).subscribe(
+    this.http.post('http://localhost:4000/api/user/register', reqObject, { headers: headers }).subscribe(
       
       // The response data
       (response) => {
