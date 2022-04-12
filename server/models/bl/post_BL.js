@@ -1,5 +1,5 @@
 const Post = require('../postModel')
-const User = require('../userModel')
+const User = require('../UsersModel')
 
 //Creates a Post Obj based of the Post Schema and puts of the PostObj info 
 //from the req obj into the new Post and at the end saves the new Post.

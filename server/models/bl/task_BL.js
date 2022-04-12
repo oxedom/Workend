@@ -1,5 +1,5 @@
 const Task = require('../taskModel')
-const User = require('../userModel')
+const User = require('../UsersModel')
 
 //Creates a task Obj based of the task Schema and puts of the taskObj info 
 //from the req obj into the new task and at the end saves the new task.

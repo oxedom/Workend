@@ -1,5 +1,5 @@
 const express = require('express');
-// const userModel = require('../models/userModel');
+const userModel = require('../models/UsersModel')
 const router = express.Router();
 const logic = require('../models/bl/post_BL')
 

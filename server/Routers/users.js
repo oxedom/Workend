@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const logic = require("../Models/bl/user_BL");
+const logic = require("../models/bl/user_BL");
 const mongoose = require("mongoose");
-const User = require("../Models/UsersModel.js");
+const User = require('../models/UsersModel')
 const passport = require("passport");
 const utils = require("../lib/utils");
 
