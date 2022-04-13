@@ -1,14 +1,21 @@
 <div class="profile">
-    <p>Name: <span> {{userName}} </span></p>
-    <p>department <span> {{userDepartment}} </span></p>
-    <p>email <span> {{userEmail}} </span></p>
+    <p>Name : <span> {{userName}} </span></p>
+    <p>Department : <span> {{userDepartment}} </span></p>
+    <p>Email : <span> {{userEmail}} </span></p>
+    <p>Birthday Date : <span> {{userBirthday}} </span></p>
+
+        Show: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br />
+<div class="check-element animate-show-hide" ng-show="checked">
+  I show up when your checkbox is checked.
+</div>
+
 </div>
     <!-- <div *ngIf="mode">
         <div *ngFor="let p of postIDs">
-            <app-post [postID]="p"></app-post>   
+            <app-post [postID]="p"></app-post>
         </div>
         <div *ngIf="!mode">
             <div *ngFor="let t of taskIDs">
-                <app-task [taskID]="t"></app-task>   
-            </div>   
+                <app-task [taskID]="t"></app-task>
+            </div>
     </div> -->
