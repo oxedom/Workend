@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { retry } from 'rxjs';
 import { Post } from '../comps/models/postModel';
 import { Task } from '../comps/models/taskModel';
+import { UserObj } from '../comps/models/UserModel';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpServiceService {
-
+  userUrl : string = 'http://localhost:4000/api/user/'
   postUrl: string = 'http://localhost:4000/api/user/posts/'
   taskUrl: string = 'http://localhost:4000/api/user/tasks/'
-  unixToDate(unixTime: string) 
+  unixToDate(unixTime: string)
 {
  var date = new Date(parseInt(unixTime) * 1000);
  var hours = date.getHours();
@@ -20,10 +21,15 @@ export class HttpServiceService {
 return formattedTime
 }
 
+updateUser(userid : string, UserObj : any)
+{
+  return this.http.put("http://localhost:8000/api/user/" + userid, UserObj)
+}
+
 
 
   //Give it a URL and it will find data for you
-  getData(url: string): any { return this.axios.get(url) }
+  getData(id: string): any { return this.http.get(this.userUrl+id) }
 
   deletePost(postId: string) { return this.axios.delete(this.postUrl+postId) }
 
@@ -33,6 +39,8 @@ return formattedTime
 
   addTask(taskObj : Task) { return this.axios.post(this.taskUrl, taskObj)}
   updateTask(taskID : string, taskObj: Task) { return this.axios.put(this.taskUrl+taskID, taskObj)}
-  constructor(private axios: HttpClient) { }
+  constructor(private axios: HttpClient, private http: HttpClient) { }
+
 }
+
 

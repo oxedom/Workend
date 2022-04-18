@@ -1,21 +1,38 @@
 <div class="profile">
-    <p>Name : <span> {{userName}} </span></p>
-    <p>Department : <span> {{userDepartment}} </span></p>
-    <p>Email : <span> {{userEmail}} </span></p>
-    <p>Birthday Date : <span> {{userBirthday}} </span></p>
+  <h1> Your profile
+  </h1>
+  <div class='subprofile' >
+    <div class="dataUser"><h2>Edit your profile : </h2> <button class="button" (click)="toggleDisplay()">Edit </button></div>
+<form  #f="ngForm" (ngSubmit)="Edit()">
+    <div class="dataUser"><h2>Name : </h2><span [hidden]="isShow">{{profile.Username}}</span><input name='UserName' [(ngModel)]="profile.Username" [hidden]="!isShow" value="{{profile.Username}}"></div>
+    <div class="dataUser"><h2>Department :</h2> <span [hidden]="isShow"> {{profile.department}} </span><input  [(ngModel)]="profile.department" name='department'[hidden]="!isShow" value="{{profile.department}}"> </div>
+    <div class="dataUser"><h2>Email :</h2> <span [hidden]="isShow"> {{profile.email}} </span><input  [(ngModel)]="profile.email" name="email" [hidden]="!isShow" value="{{profile.email}}"></div>
+    <div class="dataUser"><h2>Birthday Date : </h2><span [hidden]="isShow"> {{profile.birthday}} </span><input  [(ngModel)]="profile.birthday" name="birthday" type="datetime" [hidden]="!isShow" value="{{profile.birthday}}"></div>
+    <button class="button" [hidden]="!isShow" type="submit" click="Edit()" value="Save"[disabled]="!f.valid" >Savee</button>
+</form>
+  </div>
+  </div>
+                                                                                            <!--
+                                                                                                <form #f="ngForm" (ngSubmit)="update()">
 
-        Show: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br />
-<div class="check-element animate-show-hide" ng-show="checked">
-  I show up when your checkbox is checked.
-</div>
+                                                                                                Name : <input type="text" name="name" [(ngModel)]="user.name" ><br/>
+                                                                                                Email : <input type="text" name="email" [(ngModel)]="user.email" ><br/>
 
-</div>
-    <!-- <div *ngIf="mode">
-        <div *ngFor="let p of postIDs">
-            <app-post [postID]="p"></app-post>
-        </div>
-        <div *ngIf="!mode">
-            <div *ngFor="let t of taskIDs">
-                <app-task [taskID]="t"></app-task>
-            </div>
-    </div> -->
+                                                                                                <input type="submit" value="Update" />
+
+                                                                                                </form>
+
+
+
+
+
+                                                                                              <form #f="ngForm" (ngSubmit)="customSubmit(f.valid)">
+dfsdfsd                                                                                            First Name : <input name="fname" #fname="ngModel" required  [(ngModel)]="user.fname"  type="text"><br/>
+
+                                                                                            Last Name : <input name="lname" #lname="ngModel" minlength="3" [(ngModel)]="user.lname" type="text"><br/>
+
+                                                                                            <input type="submit" value="Save" [disabled]="!f.valid">
+
+                                                                                            <div *ngIf="!fname.valid && fname.dirty">The First name is mandatory</div>
+                                                                                            <div *ngIf="!lname.valid && lname.dirty">The Last name must be 3 chars minimum</div>
+                                                                                            </form> -->
