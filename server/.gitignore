@@ -1,2 +1,4 @@
 config/config.js
 node_modules/
+id_rsa_priv
+id_rsa_pub 
