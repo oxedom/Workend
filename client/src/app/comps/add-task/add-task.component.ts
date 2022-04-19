@@ -28,7 +28,7 @@ export class AddTaskComponent implements OnInit {
     let content = f.value.taskContent
     //USER ID is currently hardcoded
     let taskObj = {
-        userid: "623c7440f622378a8955305b",
+        userid: localStorage.getItem('userid'),
         title: f.value.taskTitle,
         text: content ,
         completed: f.value.taskCompleted

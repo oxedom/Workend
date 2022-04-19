@@ -14,9 +14,8 @@ router.get(
       success: true,
       msg: "You are successfully authenticated to this route!",
     });
-    if (err) {
-      next(err);
-    }
+
+    
   }
 );
 
