@@ -1,5 +1,3 @@
-import { HttpServiceService } from "./service/http-service.service"
-import { HttpClient } from "@angular/common/http"
 export class Profile {
   static userid: string
   public fname: string

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { retry } from 'rxjs';
 import { Post } from '../comps/models/postModel';
 import { Task } from '../comps/models/taskModel';
-import { UserObj } from '../comps/models/UserModel';
+// import { UserObj } from '../comps/models/UserModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,9 +21,9 @@ export class HttpServiceService {
 return formattedTime
 }
 
-updateUser(userid : string, UserObj : any)
+updateUser(userid : string, obj : any)
 {
-  return this.http.put("http://localhost:8000/api/user/" + userid, UserObj)
+  return this.http.put(`http://localhost:4000/api/user/${userid}`, obj)
 }
 
 

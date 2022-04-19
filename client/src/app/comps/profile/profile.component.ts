@@ -5,8 +5,7 @@ import { StoreService } from 'src/app/service/store.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { NgForm } from '@angular/forms';
-import { Profile } from 'src/app/profile.model';
-
+import { Profile } from '../models/profile.model';
 
 @Component({
   selector: 'app-profile',
