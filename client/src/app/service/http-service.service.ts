@@ -29,7 +29,7 @@ updateUser(userid : string, obj : any)
 
 
   //Give it a URL and it will find data for you
-  getData(id: string): any { return this.http.get(this.userUrl+id) }
+  getData( url : string): any { return this.http.get(url) }
 
   deletePost(postId: string) { return this.axios.delete(this.postUrl+postId) }
 

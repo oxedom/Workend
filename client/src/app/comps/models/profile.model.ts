@@ -2,8 +2,8 @@ export class Profile {
   static userid: string
   public fname: string
   public userid: string
-  public birthday: Date
-  public Username: string
+  public birthday: string
+  public username: string
   public lname: string
   public department: string
   public email: string
@@ -15,7 +15,7 @@ export class Profile {
     this.userid = profile.userid
     this.fname = profile.fname
     this.birthday = profile.birthday
-    this.Username = profile.Username
+    this.username = profile.username
     this.lname = profile.lname
     this.department = profile.department
     this.email = profile.email
@@ -23,4 +23,7 @@ export class Profile {
     this.posts = profile.posts
   }
 
+  getAge() {
+    console.log(`${this.fname}+${this.lname}`)
+  }
 }

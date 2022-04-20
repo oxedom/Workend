@@ -26,30 +26,25 @@ export class ProfileComponent implements OnInit {
 
 
   sub: Subscription = new Subscription()
+
   profile :  Profile = {
     fname: '',
-    birthday: new Date(),
-    Username: '',
+    birthday: '',
+    username: '',
     lname: '',
     department: '',
     email: '',
     tasks: [],
     posts: [],
-    userid : ''
+    userid: '',
+    getAge: function (): void {
+      throw new Error('Function not implemented.');
+    }
   }
   mode: boolean = true
   userID: string = ""
-  // userBirthday: number = 0
-  // userName: string = ""
-  // userDepartment: string = ""
-  // userEmail: string = ""
-  // taskIDs: string[] = []
-  // postIDs: string[] = []
-  //this.sub = is getting the user object
-
 
   subEdit: Subscription = new Subscription()
-
   notValid: boolean = false
   isShow = false;
 
@@ -59,11 +54,11 @@ export class ProfileComponent implements OnInit {
     this.isShow = !this.isShow
   };
 
-  Edit()
+  editProfile()
   {
       let obj = {
 
-        Username: this.profile.Username ,
+        Username: this.profile.username ,
         department : this.profile.department,
         email : this.profile.email,
         birthday :this.profile.birthday
@@ -77,6 +72,7 @@ export class ProfileComponent implements OnInit {
 
 
     ngOnInit(): void {
+      let localUserid = localStorage.getItem('userid')
       //Protect the route with jwt.
       // If the User is authorized our server is asking for the jwt and return it with the user ID.
       this.subProtect = this.http.get<any>('http://localhost:4000/api/user/').subscribe({
@@ -87,7 +83,7 @@ export class ProfileComponent implements OnInit {
             )},
           complete : () => {console.log('HTTP request done')}
         });
-      let localUserid = localStorage.getItem('userid')
+ 
       if (localUserid == null) { this.profile.userid = '404_USERID' }
       else { this.userID = localUserid }
 
@@ -97,13 +93,7 @@ export class ProfileComponent implements OnInit {
       // get the user data
       this.sub = this.axiox.getData(this.userID)
         .subscribe((data: any) => { this.profile = data
-          console.log(data)
-          // this.userName = data.Username
-          // this.userDepartment = data.department
-          // this.userEmail = data.email
-          // this.userBirthday = data.birthday
-          // this.taskIDs = data.tasks
-          // this.postIDs = data.posts
+
 
 
 
@@ -118,12 +108,3 @@ export class ProfileComponent implements OnInit {
       this.sub.unsubscribe()
     }
   }
-
-
-
-
-
-
-
-
-
