@@ -10,12 +10,12 @@ REST API with all CRUD actions
 Auth
 
 
-Tech Stack:
-GIT (Working on the project with Kevin on differnet branches) 
-Angular 
-Express
-Mongodb (Atlas server)
-Authatcation using passport,jwt and bycrypt (for hashing + salting passwords) 
+ Tech Stack:
+* GIT (Working on the project with Kevin on differnet branches) 
+* Angular 
+* Express
+* Mongodb (Atlas server)
+* Authatcation using passport,jwt and bycrypt (for hashing + salting passwords) 
 
 
 PRE PROJECT Docs:
